@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>BuildPro — Solusi Konstruksi Profesional</title>
+  <meta
+    name="description"
+    content="BuildPro menyediakan jasa konstruksi, renovasi, dan pembangunan dengan kualitas terbaik."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* =========================
+       VARIABLES
+    ========================= */
+
+    :root {
+      --primary: #f5b400;
+      --primary-dark: #d99e00;
+
+      --dark: #17202a;
+      --dark-2: #202b36;
+
+      --text: #343a40;
+      --muted: #6b7280;
+
+      --background: #f7f7f5;
+      --surface: #ffffff;
+
+      --border: #e5e7eb;
+
+      --success: #2e7d32;
+
+      --container: 1180px;
+    }
+
+    /* =========================
+       RESET
+    ========================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+      background: var(--background);
+      line-height: 1.6;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 40px));
+      margin: auto;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+
+      background: rgba(23, 32, 42, 0.96);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-container {
+      height: 76px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      color: white;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      color: #dbe2e8;
+      font-size: 14px;
+      font-weight: 500;
+      transition: 0.25s;
+    }
+
+    .nav-menu a:hover {
+      color: var(--primary);
+    }
+
+    .nav-cta {
+      padding: 11px 18px;
+      background: var(--primary);
+      color: var(--dark) !important;
+      border-radius: 6px;
+      font-weight: 700 !important;
+    }
+
+    .nav-cta:hover {
+      background: #ffc72c;
+    }
+
+    .mobile-menu {
+      display: none;
+      border: none;
+      background: transparent;
+      color: white;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 720px;
+
+      display: flex;
+      align-items: center;
+
+      position: relative;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          90deg,
+          rgba(23, 32, 42, 0.96) 0%,
+          rgba(23, 32, 42, 0.85) 50%,
+          rgba(23, 32, 42, 0.55) 100%
+        ),
+        url("https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2000&q=85")
+        center / cover;
+    }
+
+    .hero-content {
+      max-width: 760px;
+      padding-top: 70px;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+
+      margin-bottom: 18px;
+    }
+
+    .hero-label::before {
+      content: "";
+      width: 30px;
+      height: 2px;
+      background: var(--primary);
+    }
+
+    .hero h1 {
+      color: white;
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1.05;
+      letter-spacing: -2.5px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero-description {
+      color: #d7dde2;
+      font-size: 17px;
+      max-width: 620px;
+      margin-bottom: 34px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 14px 24px;
+
+      border-radius: 6px;
+
+      font-size: 14px;
+      font-weight: 700;
+
+      transition: 0.25s;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--dark);
+    }
+
+    .btn-primary:hover {
+      background: #ffc72c;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      color: white;
+      border: 1px solid rgba(255,255,255,0.4);
+    }
+
+    .btn-outline:hover {
+      border-color: white;
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* =========================
+       STATS
+    ========================= */
+
+    .stats {
+      background: var(--dark);
+      color: white;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stat {
+      padding: 30px 25px;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .stat:last-child {
+      border-right: none;
+    }
+
+    .stat-number {
+      color: var(--primary);
+      font-size: 30px;
+      font-weight: 800;
+      margin-bottom: 3px;
+    }
+
+    .stat-label {
+      color: #aeb7bf;
+      font-size: 13px;
+    }
+
+    /* =========================
+       SECTION
+    ========================= */
+
+    section {
+      padding: 100px 0;
+    }
+
+    .section-header {
+      max-width: 650px;
+      margin-bottom: 50px;
+    }
+
+    .section-label {
+      color: var(--primary-dark);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      color: var(--dark);
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+      margin-bottom: 15px;
+    }
+
+    .section-description {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* =========================
+       SERVICES
+    ========================= */
+
+    .services {
+      background: var(--background);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--surface);
+      padding: 32px;
+
+      border: 1px solid var(--border);
+      border-radius: 8px;
+
+      transition: 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--primary);
+      box-shadow: 0 15px 40px rgba(23, 32, 42, 0.08);
+    }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #fff4cc;
+      color: var(--primary-dark);
+
+      border-radius: 8px;
+
+      font-size: 24px;
+
+      margin-bottom: 22px;
+    }
+
+    .service-card h3 {
+      color: var(--dark);
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about {
+      background: white;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .about-image {
+      height: 520px;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .about-image img {
+      height: 100%;
+    }
+
+    .experience-box {
+      position: absolute;
+      bottom: 25px;
+      left: 25px;
+
+      background: var(--primary);
+      color: var(--dark);
+
+      padding: 22px 28px;
+      border-radius: 6px;
+    }
+
+    .experience-box strong {
+      display: block;
+      font-size: 32px;
+      line-height: 1;
+    }
+
+    .experience-box span {
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .about-content h2 {
+      color: var(--dark);
+      font-size: 42px;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .about-content > p {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 28px;
+    }
+
+    .check-list {
+      list-style: none;
+      display: grid;
+      gap: 14px;
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      color: var(--dark);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .check-list li::before {
+      content: "✓";
+
+      width: 24px;
+      height: 24px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #e9f5e9;
+      color: var(--success);
+
+      border-radius: 50%;
+
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    /* =========================
+       PROJECTS
+    ========================= */
+
+    .projects {
+      background: var(--background);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+
+      border: 1px solid var(--border);
+    }
+
+    .project-image {
+      height: 240px;
+      overflow: hidden;
+    }
+
+    .project-image img {
+      height: 100%;
+      transition: 0.5s;
+    }
+
+    .project-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .project-content {
+      padding: 22px;
+    }
+
+    .project-category {
+      color: var(--primary-dark);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .project-content h3 {
+      color: var(--dark);
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .project-content p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* =========================
+       PROCESS
+    ========================= */
+
+    .process {
+      background: white;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .process-card {
+      position: relative;
+      padding: 30px;
+
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .process-number {
+      color: var(--primary);
+      font-size: 42px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 25px;
+    }
+
+    .process-card h3 {
+      color: var(--dark);
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+
+    .process-card p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta {
+      padding: 80px 0;
+      background: var(--dark);
+    }
+
+    .cta-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .cta h2 {
+      color: white;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .cta p {
+      color: #aeb7bf;
+      max-width: 600px;
+      font-size: 14px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      background: #10161c;
+      color: white;
+      padding: 55px 0 25px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 50px;
+
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-logo {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    .footer-logo span {
+      color: var(--primary);
+    }
+
+    .footer-about {
+      color: #8d99a3;
+      font-size: 13px;
+      max-width: 400px;
+    }
+
+    .footer-column h4 {
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-column li {
+      color: #8d99a3;
+      font-size: 13px;
+    }
+
+    .footer-column a:hover {
+      color: var(--primary);
+    }
+
+    .footer-bottom {
+      padding-top: 22px;
+
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+
+      color: #68737c;
+      font-size: 12px;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 900px) {
+
+      .nav-menu {
+        position: absolute;
+        top: 76px;
+        left: 0;
+        width: 100%;
+
+        background: var(--dark);
+
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+
+        padding: 25px 20px;
+      }
+
+      .nav-menu.active {
+        display: flex;
+      }
+
+      .mobile-menu {
+        display: block;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat:nth-child(2) {
+        border-right: none;
+      }
+
+      .services-grid,
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .about-image {
+        height: 420px;
+      }
+
+      .cta-box {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .container {
+        width: min(var(--container), calc(100% - 30px));
+      }
+
+      section {
+        padding: 70px 0;
+      }
+
+      .hero {
+        min-height: 650px;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .hero-description {
+        font-size: 15px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stat {
+        padding: 22px 15px;
+      }
+
+      .services-grid,
+      .projects-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-content h2 {
+        font-size: 32px;
+      }
+
+      .about-image {
+        height: 350px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       NAVBAR
+  ========================== -->
+
+  <header class="navbar">
+    <div class="container nav-container">
+
+      <a href="#" class="logo">
+        BUILD<span>PRO</span>
+      </a>
+
+      <button class="mobile-menu" id="mobileMenu">
+        ☰
+      </button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Layanan</a></li>
+        <li><a href="#about">Tentang Kami</a></li>
+        <li><a href="#projects">Proyek</a></li>
+        <li><a href="#process">Proses</a></li>
+        <li>
+          <a href="#contact" class="nav-cta">
+            Konsultasi
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </header>
+
+
+  <!-- =========================
+       HERO
+  ========================== -->
+
+  <section class="hero" id="home">
+
+    <div class="container">
+
+      <div class="hero-content">
+
+        <div class="hero-label">
+          Construction & Engineering
+        </div>
+
+        <h1>
+          Membangun dengan
+          <span>kualitas.</span>
+          Mewujudkan kepercayaan.
+        </h1>
+
+        <p class="hero-description">
+          Kami membantu mewujudkan proyek konstruksi Anda
+          dengan perencanaan yang matang, tenaga profesional,
+          dan standar kualitas terbaik.
+        </p>
+
+        <div class="hero-buttons">
+
+          <a href="#contact" class="btn btn-primary">
+            Konsultasi Sekarang →
+          </a>
+
+          <a href="#projects" class="btn btn-outline">
+            Lihat Proyek
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       STATS
+  ========================== -->
+
+  <section class="stats">
+
+    <div class="container stats-grid">
+
+      <div class="stat">
+        <div class="stat-number">10+</div>
+        <div class="stat-label">Tahun Pengalaman</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-number">150+</div>
+        <div class="stat-label">Proyek Selesai</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-number">98%</div>
+        <div class="stat-label">Customer Puas</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">Tenaga Profesional</div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       SERVICES
+  ========================== -->
+
+  <section class="services" id="services">
+
+    <div class="container">
+
+      <div class="section-header">
+
+        <div class="section-label">
+          Layanan Kami
+        </div>
+
+        <h2 class="section-title">
+          Solusi konstruksi untuk setiap kebutuhan.
+        </h2>
+
+        <p class="section-description">
+          Dari perencanaan hingga penyelesaian proyek,
+          kami memberikan layanan konstruksi yang terintegrasi.
+        </p>
+
+      </div>
+
+
+      <div class="services-grid">
+
+        <div class="service-card">
+
+          <div class="service-icon">
+            🏗️
+          </div>
+
+          <h3>
+            Konstruksi Bangunan
+          </h3>
+
+          <p>
+            Pembangunan gedung, rumah, kantor, dan berbagai
+            kebutuhan konstruksi dengan standar kualitas tinggi.
+          </p>
+
+        </div>
+
+
+        <div class="service-card">
+
+          <div class="service-icon">
+            🔨
+          </div>
+
+          <h3>
+            Renovasi
+          </h3>
+
+          <p>
+            Renovasi dan perbaikan bangunan untuk memberikan
+            tampilan serta fungsi yang lebih baik.
+          </p>
+
+        </div>
+
+
+        <div class="service-card">
+
+          <div class="service-icon">
+            📐
+          </div>
+
+          <h3>
+            Design & Planning
+          </h3>
+
+          <p>
+            Perencanaan dan desain proyek secara detail
+            sebelum proses konstruksi dimulai.
+          </p>
+
+        </div>
+
+
+        <div class="service-card">
+
+          <div class="service-icon">
+            🏢
+          </div>
+
+          <h3>
+            Commercial Building
+          </h3>
+
+          <p>
+            Solusi pembangunan untuk kantor, toko,
+            gudang, dan kebutuhan bisnis lainnya.
+          </p>
+
+        </div>
+
+
+        <div class="service-card">
+
+          <div class="service-icon">
+            ⚙️
+          </div>
+
+          <h3>
+            Maintenance
+          </h3>
+
+          <p>
+            Perawatan dan pemeliharaan bangunan untuk
+            menjaga kualitas dan keamanan aset Anda.
+          </p>
+
+        </div>
+
+
+        <div class="service-card">
+
+          <div class="service-icon">
+            🧱
+          </div>
+
+          <h3>
+            General Contractor
+          </h3>
+
+          <p>
+            Pengelolaan proyek konstruksi secara menyeluruh
+            dari awal hingga proyek selesai.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       ABOUT
+  ========================== -->
+
+  <section class="about" id="about">
+
+    <div class="container about-grid">
+
+      <div class="about-image">
+
+        <img
+          src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=85"
+          alt="Construction Project"
+        >
+
+        <div class="experience-box">
+          <strong>10+</strong>
+          <span>Tahun Pengalaman</span>
+        </div>
+
+      </div>
+
+
+      <div class="about-content">
+
+        <div class="section-label">
+          Tentang Kami
+        </div>
+
+        <h2>
+          Partner konstruksi yang dapat Anda percaya.
+        </h2>
+
+        <p>
+          BuildPro adalah perusahaan konstruksi yang berkomitmen
+          memberikan hasil terbaik melalui kombinasi pengalaman,
+          tenaga profesional, teknologi, dan manajemen proyek
+          yang terstruktur.
+        </p>
+
+        <ul class="check-list">
+
+          <li>
+            Tenaga profesional berpengalaman
+          </li>
+
+          <li>
+            Material dan standar kualitas terbaik
+          </li>
+
+          <li>
+            Timeline proyek yang terencana
+          </li>
+
+          <li>
+            Transparansi biaya dan proses
+          </li>
+
+          <li>
+            Garansi dan after-sales service
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       PROJECTS
+  ========================== -->
+
+  <section class="projects" id="projects">
+
+    <div class="container">
+
+      <div class="section-header">
+
+        <div class="section-label">
+          Portfolio
+        </div>
+
+        <h2 class="section-title">
+          Proyek yang telah kami kerjakan.
+        </h2>
+
+        <p class="section-description">
+          Beberapa proyek yang telah kami selesaikan
+          bersama client dari berbagai sektor.
+        </p>
+
+      </div>
+
+
+      <div class="projects-grid">
+
+        <div class="project-card">
+
+          <div class="project-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=85"
+              alt="Office Building"
+            >
+
+          </div>
+
+          <div class="project-content">
+
+            <div class="project-category">
+              Commercial
+            </div>
+
+            <h3>
+              Modern Office Building
+            </h3>
+
+            <p>
+              Jakarta, Indonesia · 2025
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="project-card">
+
+          <div class="project-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=85"
+              alt="Luxury House"
+            >
+
+          </div>
+
+          <div class="project-content">
+
+            <div class="project-category">
+              Residential
+            </div>
+
+            <h3>
+              Luxury Private Residence
+            </h3>
+
+            <p>
+              Jakarta Selatan, Indonesia · 2025
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="project-card">
+
+          <div class="project-image">
+
+            <img
+              src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?auto=format&fit=crop&w=1000&q=85"
+              alt="Warehouse"
+            >
+
+          </div>
+
+          <div class="project-content">
+
+            <div class="project-category">
+              Industrial
+            </div>
+
+            <h3>
+              Industrial Warehouse
+            </h3>
+
+            <p>
+              Bekasi, Indonesia · 2024
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       PROCESS
+  ========================== -->
+
+  <section class="process" id="process">
+
+    <div class="container">
+
+      <div class="section-header">
+
+        <div class="section-label">
+          Cara Kerja
+        </div>
+
+        <h2 class="section-title">
+          Dari ide menjadi bangunan nyata.
+        </h2>
+
+        <p class="section-description">
+          Kami memastikan setiap tahap proyek berjalan
+          secara terstruktur dan transparan.
+        </p>
+
+      </div>
+
+
+      <div class="process-grid">
+
+        <div class="process-card">
+
+          <div class="process-number">
+            01
+          </div>
+
+          <h3>
+            Konsultasi
+          </h3>
+
+          <p>
+            Diskusikan kebutuhan, konsep, budget,
+            dan target proyek Anda.
+          </p>
+
+        </div>
+
+
+        <div class="process-card">
+
+          <div class="process-number">
+            02
+          </div>
+
+          <h3>
+            Planning
+          </h3>
+
+          <p>
+            Kami membuat perencanaan, desain,
+            estimasi biaya, dan timeline.
+          </p>
+
+        </div>
+
+
+        <div class="process-card">
+
+          <div class="process-number">
+            03
+          </div>
+
+          <h3>
+            Construction
+          </h3>
+
+          <p>
+            Tim profesional menjalankan proses
+            pembangunan sesuai perencanaan.
+          </p>
+
+        </div>
+
+
+        <div class="process-card">
+
+          <div class="process-number">
+            04
+          </div>
+
+          <h3>
+            Handover
+          </h3>
+
+          <p>
+            Proyek diperiksa dan diserahterimakan
+            kepada customer.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CTA
+  ========================== -->
+
+  <section class="cta" id="contact">
+
+    <div class="container">
+
+      <div class="cta-box">
+
+        <div>
+
+          <h2>
+            Punya proyek yang ingin dibangun?
+          </h2>
+
+          <p>
+            Konsultasikan kebutuhan proyek Anda bersama
+            tim kami dan dapatkan solusi terbaik.
+          </p>
+
+        </div>
+
+        <a
+          href="https://wa.me/6281234567890?text=Halo%20BuildPro,%20saya%20ingin%20konsultasi%20mengenai%20proyek%20konstruksi."
+          target="_blank"
+          class="btn btn-primary"
+        >
+          Konsultasi via WhatsApp →
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+
+          <div class="footer-logo">
+            BUILD<span>PRO</span>
+          </div>
+
+          <p class="footer-about">
+            Partner konstruksi profesional untuk membantu
+            mewujudkan proyek Anda dengan kualitas,
+            ketepatan, dan integritas.
+          </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h4>
+            Navigation
+          </h4>
+
+          <ul>
+
+            <li>
+              <a href="#home">Home</a>
+            </li>
+
+            <li>
+              <a href="#services">Layanan</a>
+            </li>
+
+            <li>
+              <a href="#about">Tentang Kami</a>
+            </li>
+
+            <li>
+              <a href="#projects">Proyek</a>
+            </li>
+
+          </ul>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h4>
+            Contact
+          </h4>
+
+          <ul>
+
+            <li>
+              Jakarta, Indonesia
+            </li>
+
+            <li>
+              +62 812-3456-7890
+            </li>
+
+            <li>
+              hello@buildpro.id
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <span>
+          © 2026 BuildPro. All rights reserved.
+        </span>
+
+        <span>
+          Construction & Engineering
+        </span>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script>
+
+    const mobileMenu = document.getElementById("mobileMenu");
+    const navMenu = document.getElementById("navMenu");
+
+    mobileMenu.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+    });
+
+
+    // Close mobile menu after clicking navigation
+    document.querySelectorAll(".nav-menu a").forEach(link => {
+
+      link.addEventListener("click", () => {
+        navMenu.classList.remove("active");
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>
